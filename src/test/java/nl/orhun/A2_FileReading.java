@@ -8,16 +8,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import org.junit.jupiter.api.Test;
 
-public class A2_FileReading {
+class A2_FileReading {
 
-  public static void main(String[] args) {
-    A2_FileReading s2BLa = new A2_FileReading();
-    s2BLa.readClasspathResource();
-    s2BLa.readClassPathInputStreamWithBufferedReader();
-  }
-
-  private void readClasspathResource() {
+  @Test
+  void readClasspathResource() {
     URL resource = A2_FileReading.class.getResource("/A2Input.txt");
     try {
       String content = Files.readString(Path.of(resource.toURI()));
@@ -27,7 +23,8 @@ public class A2_FileReading {
     }
   }
 
-  private void readClassPathInputStreamWithBufferedReader() {
+  @Test
+  void readClassPathInputStreamWithBufferedReader() {
     InputStream in = A2_FileReading.class.getResourceAsStream("/A2Input.txt");
 
     StringBuilder content = new StringBuilder();
